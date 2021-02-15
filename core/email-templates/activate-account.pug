@@ -1,0 +1,8 @@
+extends template
+
+block content
+    h3 Welcome!
+    a(href=`${process.env.FRONTEND_URL}/api/auth/activate/${token}`) click here
+    |
+    |
+    span to activate your account

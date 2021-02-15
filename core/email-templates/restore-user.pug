@@ -1,0 +1,7 @@
+extends template
+block content
+    div We are very upset that you left us :(
+    a(href=`${process.env.FRONTEND_URL}/api/auth/restore/${token}`) click here
+    |
+    |
+    span to restore your account
