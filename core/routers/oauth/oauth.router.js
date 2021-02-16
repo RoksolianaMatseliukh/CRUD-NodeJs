@@ -49,6 +49,7 @@ oauthRouter.post('/refresh',
 
 oauthRouter.post('/password/forgot',
     actionTokenMiddlewares.checkIsEmailValid,
+    // oauthMiddlewares.checkIsUserAccountActivated,
     actionTokensController.createActionTokenForgotPassword);
 
 oauthRouter.post('/password/reset',

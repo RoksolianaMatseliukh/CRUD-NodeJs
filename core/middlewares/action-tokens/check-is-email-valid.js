@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     try {
         const { email } = req.body;
 
-        const { error } = emailValidator.validate(email);
+        const { error } = emailValidator.validate(req.body);
 
         if (error) {
             const [{ message }] = error.details;
