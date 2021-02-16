@@ -378,7 +378,7 @@
     "/auth/logout": {
       "post": {
         "summary": "Logout.",
-        "description": "Also send in header(Authorization) - access token.",
+        "description": "Only send in header(Authorization) - access token.",
         "responses": {
           "204": {
             "description": "No content."

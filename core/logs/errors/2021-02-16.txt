@@ -81,3 +81,18 @@
   "label": "app",
   "timestamp": "2021-02-16 19:01:47"
 }
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 19:57:17"
+}
+{
+  "message": "wrong email or password",
+  "customCode": 40012,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 19:57:44"
+}
