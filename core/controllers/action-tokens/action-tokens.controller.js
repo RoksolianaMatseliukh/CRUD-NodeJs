@@ -68,7 +68,7 @@ module.exports = {
 
             const hashedPassword = await hash(password);
 
-            await actionTokensService.deleteActionToken(token, transaction);
+            await actionTokensService.deleteActionToken({ token }, transaction);
             await usersService.updateUserById(user_id, { password: hashedPassword }, transaction);
             await logsService.createLog({ log_name: PASSWORD_CHANGED, user_id }, transaction);
 
@@ -113,7 +113,7 @@ module.exports = {
                 actionToken: { token, user_id }
             } = req;
 
-            await actionTokensService.deleteActionToken(token, transaction);
+            await actionTokensService.deleteActionToken({ token }, transaction);
             await logsService.createLog({ log_name: USER_RESTORED, user_id }, transaction);
             await usersService.restoreUserById(user_id, transaction);
 

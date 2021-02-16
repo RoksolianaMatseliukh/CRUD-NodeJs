@@ -1,0 +1,30 @@
+{
+  "message": "3 deleted not activated users per 2021-02-16",
+  "level": "info",
+  "label": "cron-job: not-activated-users-control",
+  "timestamp": "2021-02-16 15:04:00"
+}
+{
+  "message": "3 deleted not activated users per 2021-02-16",
+  "level": "info",
+  "label": "cron-job: not-activated-users-control",
+  "timestamp": "2021-02-16 15:08:00"
+}
+{
+  "message": "0 deleted not activated users per 2021-02-16",
+  "level": "info",
+  "label": "cron-job: not-activated-users-control",
+  "timestamp": "2021-02-16 15:16:00"
+}
+{
+  "message": "0 deleted not activated users per 2021-02-16",
+  "level": "info",
+  "label": "cron-job: not-activated-users-control",
+  "timestamp": "2021-02-16 15:17:00"
+}
+{
+  "message": "0 deleted not activated users per 2021-02-16",
+  "level": "info",
+  "label": "cron-job: not-activated-users-control",
+  "timestamp": "2021-02-16 15:18:00"
+}

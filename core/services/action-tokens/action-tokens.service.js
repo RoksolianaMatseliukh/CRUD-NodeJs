@@ -15,8 +15,8 @@ module.exports = {
         });
     },
 
-    deleteActionToken: (token, transaction) => ActionTokenModel.destroy({
-        where: { token },
+    deleteActionToken: (where, transaction) => ActionTokenModel.destroy({
+        where,
         transaction
     }),
 };

@@ -16,11 +16,8 @@ module.exports = {
         paranoid: false
     }),
 
-    deleteTokenPair: async (where, transaction) => {
-        await OAuthModel.destroy({
-            where,
-            paranoid: false,
-            transaction
-        });
-    }
+    deleteTokenPair: (where, transaction) => OAuthModel.destroy({
+        where,
+        transaction
+    })
 };

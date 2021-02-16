@@ -17,5 +17,5 @@ const {
 module.exports.sequelize = new Sequelize(DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD, {
     dialect: DIALECT,
     host: HOST,
-    // logging: false
+    logging: false
 });

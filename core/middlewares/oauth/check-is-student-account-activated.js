@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     try {
         const { id } = req.user;
 
-        const { status } = await actionTokensService.getActionTokenByParams({ action_name: ACTIVATE_ACCOUNT, user_id: id });
+        const { status } = await actionTokensService.getActionTokenByParams({ action_name: ACTIVATE_ACCOUNT, user_id: id }) || {};
 
         if (!status) {
             throw new ErrorHandler(

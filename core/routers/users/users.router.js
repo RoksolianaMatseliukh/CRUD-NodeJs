@@ -21,22 +21,21 @@ usersRouter.get('/',
 
 usersRouter.get('/:userId',
     usersMiddlewares.checkIsUserIdValid,
-    usersMiddlewares.checkIsUserDeleted,
     usersMiddlewares.checkUserByParams,
     usersController.getUserById);
 
-usersRouter.put('/:userId',
+usersRouter.use('/:userId',
     usersMiddlewares.checkIsUserIdValid,
-    usersMiddlewares.checkIsUserDeleted,
+    usersMiddlewares.checkIsUserDeleted);
+
+usersRouter.put('/:userId',
     usersMiddlewares.checkIsUserBodyValid(updateUserValidator),
     filesMiddlewares.checkFileExtensionsCount,
     filesMiddlewares.checkNumberOfUserAvatar,
-    // oauthMiddlewares.checkToken(ACCESS_TOKEN, ACCESS_SECRET),
+    oauthMiddlewares.checkToken(ACCESS_TOKEN, ACCESS_SECRET),
     usersController.updateUserById);
 
 usersRouter.delete('/:userId',
-    usersMiddlewares.checkIsUserIdValid,
-    usersMiddlewares.checkIsUserDeleted,
     oauthMiddlewares.checkToken(ACCESS_TOKEN, ACCESS_SECRET),
     usersController.deleteUserById);
 

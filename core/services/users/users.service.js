@@ -47,6 +47,13 @@ module.exports = {
         });
     },
 
+    // deleteNotActivatedUsers: (where) => {
+    //     return UserModel.destroy({
+    //         include: { model: ActionTokenModel, where },
+    //         force: true
+    //     });
+    // },
+
     restoreUserById: async (id, transaction) => {
         await UserModel.restore({
             where: { id },

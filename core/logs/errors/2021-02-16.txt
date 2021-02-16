@@ -1,0 +1,83 @@
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 14:34:19"
+}
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 14:47:46"
+}
+{
+  "message": "\"name\" is required",
+  "statusCode": 400,
+  "customCode": 4004,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 16:30:03"
+}
+{
+  "message": "entity already exists",
+  "customCode": 4002,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 17:12:31"
+}
+{
+  "message": "user not confirmed",
+  "statusCode": 400,
+  "customCode": 40010,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 17:14:36"
+}
+{
+  "message": "Cannot destructure property 'status' of '(intermediate value)' as it is null.",
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 17:15:53"
+}
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 18:39:31"
+}
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 18:39:31"
+}
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 18:50:12"
+}
+{
+  "message": "no token",
+  "customCode": 4006,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 19:00:19"
+}
+{
+  "message": "entity not found",
+  "customCode": 4003,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-16 19:01:47"
+}

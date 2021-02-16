@@ -14,7 +14,7 @@ module.exports = {
 
             await oauthService.createTokenPair({ ...token_pair, user_id: id });
 
-            res.json({ ...req.user, ...token_pair });
+            res.status(CREATED).json({ ...req.user, ...token_pair });
         } catch (e) {
             next(e);
         }

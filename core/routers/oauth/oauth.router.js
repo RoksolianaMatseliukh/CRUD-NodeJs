@@ -5,6 +5,7 @@ const { actionTokensController, oauthController } = require('../../controllers')
 const { usersValidators: { userToLoginValidator } } = require('../../validators');
 const {
     appConfigs: {
+        ACCESS_SECRET,
         ACTIVATE_ACCOUNT_SECRET,
         FORGOT_PASSWORD_SECRET,
         REFRESH_SECRET, RESTORE_USER_SECRET
@@ -12,6 +13,7 @@ const {
 } = require('../../configs');
 const {
     appEnum: {
+        ACCESS_TOKEN,
         REFRESH_TOKEN
     },
     emailActionsEnum: {
@@ -36,7 +38,7 @@ oauthRouter.get('/activate/:token',
 
 oauthRouter.post('/restore/account/:userId',
     actionTokenMiddlewares.checkIsEmailValid,
-    // oauthMiddlewares.checkToken(ACCESS_TOKEN, ACCESS_SECRET),
+    oauthMiddlewares.checkToken(ACCESS_TOKEN, ACCESS_SECRET),
     actionTokensController.createActionTokenRestoreUser);
 
 oauthRouter.get('/restore/:token',
@@ -49,7 +51,7 @@ oauthRouter.post('/refresh',
 
 oauthRouter.post('/password/forgot',
     actionTokenMiddlewares.checkIsEmailValid,
-    // oauthMiddlewares.checkIsUserAccountActivated,
+    oauthMiddlewares.checkIsUserAccountActivated,
     actionTokensController.createActionTokenForgotPassword);
 
 oauthRouter.post('/password/reset',

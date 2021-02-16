@@ -1,13 +1,24 @@
 const { appConfigs: { PORT } } = require('../configs');
 
+const { CURRENT_YEAR_MONTH, FULL_CURRENT_DAY } = require('./date.enum');
+
 module.exports = {
     APP_IN_PROCESS: `app ${PORT} in process`,
 
-    // folder names
+    // folder / file names
+    ACTIVATED_USERS_CONTROL: 'cron-job: activated-users-control',
+    APP: 'app',
     AVATAR: 'avatar',
+    DAY_TXT: `${FULL_CURRENT_DAY}.txt`,
     EMAIL_TEMPLATES: 'email-templates',
+    ERRORS: 'errors',
+    INFORMATION: 'information',
     INNER_TEMPLATES: 'inner-templates',
+    LOGS: 'logs',
+    MONTH_TXT: `${CURRENT_YEAR_MONTH}.txt`,
+    NOT_ACTIVATED_USERS_CONTROL: 'cron-job: not-activated-users-control',
     PUBLIC: 'public',
+    REFRESH_TOKEN_CONTROL: 'cron-job: refresh-token-control',
     USERS: 'users',
 
     // token names

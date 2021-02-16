@@ -10,8 +10,10 @@
   "author": "roksi",
   "license": "ISC",
   "dependencies": {
+    "@sentry/node": "^5.30.0",
     "bcrypt": "^5.0.0",
     "chalk": "^4.1.0",
+    "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "email-templates": "^8.0.3",
     "express": "^4.17.1",
@@ -20,10 +22,14 @@
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
+    "node-cron": "^2.0.3",
     "nodemailer": "^6.4.18",
     "pug": "^3.0.0",
     "sequelize": "^6.5.0",
-    "uuid": "^8.3.2"
+    "swagger-jsdoc": "^6.0.6",
+    "swagger-ui-express": "^4.1.6",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^7.14.0",
@@ -40,8 +46,11 @@
     "@types/fs-extra": "^9.0.7",
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^8.5.0",
+    "@types/node-cron": "^2.0.3",
     "@types/nodemailer": "^6.4.0",
-    "@types/sequelize": "^4.28.9"
+    "@types/sequelize": "^4.28.9",
+    "@types/uuid": "^8.3.0",
+    "@types/winston": "^2.4.4"
   },
   "lint-staged": {
     "*.{js, json}": [
