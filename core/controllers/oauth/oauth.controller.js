@@ -44,7 +44,7 @@ module.exports = {
 
             await transaction.commit();
 
-            res.sendStatus(CREATED);
+            res.status(CREATED).json(token_pair);
         } catch (e) {
             await transaction.rollback();
             next(e);

@@ -70,7 +70,7 @@ module.exports = {
 
             await transaction.commit();
 
-            res.status(CREATED).json({ token });
+            res.status(CREATED).json(CHECK_EMAIL);
         } catch (e) {
             await transaction.rollback();
             next(e);

@@ -25,16 +25,16 @@ const {
 
 const oauthRouter = Router();
 
+oauthRouter.get('/activate/:token',
+    actionTokenMiddlewares.checkActionToken(ACTIVATE_ACCOUNT, ACTIVATE_ACCOUNT_SECRET),
+    actionTokensController.activateAccount);
+
 oauthRouter.post('/',
     usersMiddlewares.checkIsUserBodyValid(userToLoginValidator),
     oauthMiddlewares.checkUserByEmail,
     oauthMiddlewares.checkPasswordHash,
     oauthMiddlewares.checkIsUserAccountActivated,
     oauthController.login);
-
-oauthRouter.get('/activate/:token',
-    actionTokenMiddlewares.checkActionToken(ACTIVATE_ACCOUNT, ACTIVATE_ACCOUNT_SECRET),
-    actionTokensController.activateAccount);
 
 oauthRouter.post('/restore/account/:userId',
     usersMiddlewares.checkIsUserIdValid,
