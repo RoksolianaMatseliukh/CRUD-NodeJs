@@ -1,8 +1,10 @@
 #How to run a code
 
+
 #1. Install dependencies
 
    npm i
+
 
 #2. Create database
 
@@ -13,10 +15,12 @@
    npx sequelize-cli db:migrate
    (all test users have password - 111hT!h555)
 
+
 #4. Get Started
 
    node app
       or
    nodemon app
+
 
 Swagger is present, use - http://localhost:5000/api-docs 
