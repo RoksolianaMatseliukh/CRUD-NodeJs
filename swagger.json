@@ -2,7 +2,6 @@
   "openapi": "3.0.0",
   "info": {
     "title": "CRUD DEMO",
-    "description": "SIMPLE SWAGGER - WITHOUT UPLOADING AVATAR AND SENDING TOKEN IN HEADER(Authorization).",
     "version": "1.0.0"
   },
   "servers": [
@@ -17,9 +16,8 @@
         "summary": "Create a user.",
         "description": "Avatar is not required.",
         "requestBody": {
-          "required": true,
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
@@ -45,9 +43,17 @@
                     "example": "333hT!h555"
                   },
                   "avatar": {
-                    "type": "string"
+                    "type": "string",
+                    "format": "binary"
                   }
-                }
+                },
+                "required": [
+                  "name",
+                  "surname",
+                  "age",
+                  "email",
+                  "password"
+                ]
               }
             }
           }
@@ -101,7 +107,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/User"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  ]
                 }
               }
             }
@@ -114,6 +124,11 @@
       "put": {
         "summary": "Edit user.",
         "description": "Only name, surname, avatar and age are allowed to edit. Also send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userId",
@@ -125,6 +140,34 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "ira"
+                  },
+                  "surname": {
+                    "type": "string",
+                    "example": "ira"
+                  },
+                  "age": {
+                    "type": "integer",
+                    "minimum": 18,
+                    "example": 20
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "entity edited."
@@ -143,6 +186,11 @@
       "delete": {
         "summary": "Soft delete, send mail to restore account.",
         "description": "Also send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userId",
@@ -200,7 +248,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/User_OAuth"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/User_OAuth"
+                    }
+                  ]
                 }
               }
             }
@@ -240,7 +292,12 @@
     "/auth/restore/account/{userId}": {
       "post": {
         "summary": "Send mail to restore account.",
-        "description": "Also send in header(Authorization) - access token.",
+        "description": "When you soft delete an account, this mail is sent automatically, but you can send this mail again. Also send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userId",
@@ -313,6 +370,11 @@
       "post": {
         "summary": "Create new token pair by refresh token.",
         "description": "Also send in header(Authorization) - refresh token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created."
@@ -342,6 +404,12 @@
     "/auth/password/reset": {
       "post": {
         "summary": "Reset password.",
+        "description": "Also send in header(Authorization) - token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -379,6 +447,11 @@
       "post": {
         "summary": "Logout.",
         "description": "Only send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "responses": {
           "204": {
             "description": "No content."
@@ -388,6 +461,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    },
     "schemas": {
       "User": {
         "properties": {

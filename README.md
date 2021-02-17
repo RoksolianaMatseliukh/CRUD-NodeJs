@@ -13,3 +13,5 @@ How to run a code
    node app
       or
    nodemon app
+
+Swagger is present, use - http://localhost:5000/api-docs 
