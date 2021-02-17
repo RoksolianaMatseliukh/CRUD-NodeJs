@@ -16,7 +16,6 @@ module.exports = {
     INNER_TEMPLATES: 'inner-templates',
     LOGS: 'logs',
     MONTH_TXT: `${CURRENT_YEAR_MONTH}.txt`,
-    NOT_ACTIVATED_USERS_CONTROL: 'cron-job: not-activated-users-control',
     PUBLIC: 'public',
     REFRESH_TOKEN_CONTROL: 'cron-job: refresh-token-control',
     USERS: 'users',

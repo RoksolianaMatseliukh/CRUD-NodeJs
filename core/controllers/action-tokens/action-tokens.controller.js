@@ -6,6 +6,7 @@ const {
         ACCOUNT_ACTIVATED, FORGOT_PASSWORD: FORGOT_PASSWORD_LOG, PASSWORD_CHANGED, USER_RESTORED, USER_TO_RESTORE
     },
     emailActionsEnum: { FORGOT_PASSWORD, RESTORE_USER },
+    responseMessagesEnum: { PASSWORD_CHANGED: PASSWORD_CHANGED_MSG, USER_RESTORED: USER_RESTORED_MSG, USER_ACTIVATED },
     statusCodesEnum: { CREATED }
 } = require('../../constants');
 const {
@@ -26,7 +27,7 @@ module.exports = {
 
             await transaction.commit();
 
-            res.sendStatus(CREATED);
+            res.status(CREATED).json(USER_ACTIVATED);
         } catch (e) {
             await transaction.rollback();
             next(e);
@@ -50,7 +51,7 @@ module.exports = {
 
             await transaction.commit();
 
-            res.sendStatus(CREATED);
+            res.status(CREATED).json({ token });
         } catch (e) {
             await transaction.rollback();
             next(e);
@@ -74,7 +75,7 @@ module.exports = {
 
             await transaction.commit();
 
-            res.sendStatus(CREATED);
+            res.status(CREATED).json(PASSWORD_CHANGED_MSG);
         } catch (e) {
             await transaction.rollback();
             next(e);
@@ -119,7 +120,7 @@ module.exports = {
 
             await transaction.commit();
 
-            res.sendStatus(CREATED);
+            res.send(CREATED).json(USER_RESTORED_MSG);
         } catch (e) {
             await transaction.rollback();
             next(e);

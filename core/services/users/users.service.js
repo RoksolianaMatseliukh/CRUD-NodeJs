@@ -1,7 +1,11 @@
 const { Sequelize: { col } } = require('sequelize');
 
 const { UserModel } = require('../../database/models');
-const { databaseEnum: { AGE, EMAIL, PASSWORD } } = require('../../constants');
+const {
+    databaseEnum: {
+        AGE, CREATED_AT, DELETED_AT, EMAIL, PASSWORD, UPDATED_AT
+    }
+} = require('../../constants');
 
 module.exports = {
     createUser: (user, transaction) => UserModel.create(user, {
@@ -10,28 +14,44 @@ module.exports = {
 
     getUsers: (where, offset, limit, ...attributesToExclude) => UserModel.findAll({
         attributes: {
-            exclude: attributesToExclude
+            exclude: [
+                CREATED_AT,
+                DELETED_AT,
+                UPDATED_AT,
+                ...attributesToExclude
+            ]
         },
         where,
-        paranoid: false,
         order: col(AGE),
         offset,
         limit
+    }),
+
+    getUserByEmail: (email) => UserModel.findOne({
+        attributes: {
+            exclude: [
+                CREATED_AT,
+                DELETED_AT,
+                UPDATED_AT,
+            ]
+        },
+        where: { email },
+        paranoid: false
     }),
 
     getUserById: (id) => UserModel.findByPk(id, {
         attributes: {
             exclude: [
                 EMAIL,
-                PASSWORD
+                PASSWORD,
+                CREATED_AT,
+                DELETED_AT,
+                UPDATED_AT,
             ]
-        },
-        paranoid: false
+        }
     }),
 
-    getUserCount: () => UserModel.count({
-        paranoid: false
-    }),
+    getUserCount: () => UserModel.count(),
 
     updateUserById: async (id, updatedFields, transaction) => {
         await UserModel.update(updatedFields, {
@@ -46,13 +66,6 @@ module.exports = {
             transaction
         });
     },
-
-    // deleteNotActivatedUsers: (where) => {
-    //     return UserModel.destroy({
-    //         include: { model: ActionTokenModel, where },
-    //         force: true
-    //     });
-    // },
 
     restoreUserById: async (id, transaction) => {
         await UserModel.restore({

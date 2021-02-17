@@ -26,7 +26,7 @@ usersRouter.get('/:userId',
 
 usersRouter.use('/:userId',
     usersMiddlewares.checkIsUserIdValid,
-    usersMiddlewares.checkIsUserDeleted);
+    oauthMiddlewares.checkIsUserAccountActivated);
 
 usersRouter.put('/:userId',
     usersMiddlewares.checkIsUserBodyValid(updateUserValidator),

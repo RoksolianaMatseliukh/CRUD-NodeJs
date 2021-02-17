@@ -14,7 +14,7 @@ const {
         WRONG_FILE_EXTENSION,
         WRONG_NUMBER_OF_AVATAR,
         WRONG_TEMPLATE_NAME,
-        USER_DELETED,
+        USER_NOT_DELETED,
         USER_NOT_CONFIRMED
     },
     statusCodesEnum: {
@@ -38,7 +38,7 @@ const {
         WRONG_FILE_EXTENSION_CC,
         WRONG_NUMBER_OF_AVATAR_CC,
         WRONG_TEMPLATE_NAME_CC,
-        USER_DELETED_CC,
+        USER_NOT_DELETED_CC,
         USER_NOT_CONFIRMED_CC
     }
 } = require('../constants');
@@ -123,6 +123,12 @@ module.exports = {
         statusCode: BAD_REQUEST
     },
 
+    USER_NOT_DELETED: {
+        customCode: USER_NOT_DELETED_CC,
+        message: USER_NOT_DELETED,
+        statusCode: FORBIDDEN
+    },
+
     // UNAUTHORIZED
     NOT_VALID_TOKEN: {
         customCode: NOT_VALID_TOKEN_CC,
@@ -134,12 +140,6 @@ module.exports = {
     PERMISSION_DENIED: {
         customCode: PERMISSION_DENIED_CC,
         message: PERMISSION_DENIED,
-        statusCode: FORBIDDEN
-    },
-
-    USER_DELETED: {
-        customCode: USER_DELETED_CC,
-        message: USER_DELETED,
         statusCode: FORBIDDEN
     },
 

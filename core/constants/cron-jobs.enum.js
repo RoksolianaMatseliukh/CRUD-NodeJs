@@ -6,6 +6,5 @@ module.exports = {
 
     // crone-jobs msg
     ACTIVATED_USERS_MSG: `activated users per ${FULL_CURRENT_DAY}`,
-    NOT_ACTIVATED_USERS_MSG: `deleted not activated users per ${FULL_CURRENT_DAY}`,
     REFRESH_TOKEN_CONTROL_MSG: 'token pairs was deleted'
 };

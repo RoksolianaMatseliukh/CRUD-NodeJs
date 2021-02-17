@@ -1,18 +1,17 @@
-const { actionTokensService } = require('../../services');
-const { ErrorHandler, customErrors: { USER_DELETED } } = require('../../errors');
-const { emailActionsEnum: { RESTORE_USER } } = require('../../constants');
+const { usersService } = require('../../services');
+const { ErrorHandler, customErrors: { USER_NOT_DELETED } } = require('../../errors');
 
 module.exports = async (req, res, next) => {
     try {
         const { userId } = req.params;
 
-        const deletedUser = await actionTokensService.getActionTokenByParams({ action_name: RESTORE_USER, user_id: userId });
+        const foundUser = await usersService.getUserById(+userId);
 
-        if (deletedUser) {
+        if (foundUser) {
             throw new ErrorHandler(
-                USER_DELETED.message,
-                USER_DELETED.statusCode,
-                USER_DELETED.customCode
+                USER_NOT_DELETED.message,
+                USER_NOT_DELETED.statusCode,
+                USER_NOT_DELETED.customCode
             );
         }
 

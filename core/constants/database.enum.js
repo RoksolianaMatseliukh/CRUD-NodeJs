@@ -12,8 +12,11 @@ module.exports = {
 
     // table attributes
     AGE: 'age',
+    CREATED_AT: 'createdAt',
+    DELETED_AT: 'deletedAt',
     EMAIL: 'email',
     PASSWORD: 'password',
+    UPDATED_AT: 'updatedAt',
 
     // association (ActionToken, OAuth)
     ASSOCIATION: {

@@ -28,8 +28,8 @@ const oauthRouter = Router();
 oauthRouter.post('/',
     usersMiddlewares.checkIsUserBodyValid(userToLoginValidator),
     oauthMiddlewares.checkUserByEmail,
-    oauthMiddlewares.checkIsUserAccountActivated,
     oauthMiddlewares.checkPasswordHash,
+    oauthMiddlewares.checkIsUserAccountActivated,
     oauthController.login);
 
 oauthRouter.get('/activate/:token',
@@ -37,6 +37,8 @@ oauthRouter.get('/activate/:token',
     actionTokensController.activateAccount);
 
 oauthRouter.post('/restore/account/:userId',
+    usersMiddlewares.checkIsUserIdValid,
+    usersMiddlewares.checkIsUserDeleted,
     actionTokenMiddlewares.checkIsEmailValid,
     oauthMiddlewares.checkToken(ACCESS_TOKEN, ACCESS_SECRET),
     actionTokensController.createActionTokenRestoreUser);

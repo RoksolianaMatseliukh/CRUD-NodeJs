@@ -3,7 +3,7 @@ const { Sequelize: { Op } } = require('sequelize');
 const { usersService } = require('../services');
 
 module.exports = async (queries) => {
-    const where = {
+    let where = {
         limit: await usersService.getUserCount(),
         offset: 0
     };
@@ -12,12 +12,13 @@ module.exports = async (queries) => {
         where.limit = +queries.limit;
     }
 
-    if (+queries.offset) {
+    if (+queries.page) {
         where.offset = where.limit * (queries.page - 1);
     }
 
     if (+queries.age_gte) {
-        where.age = {
+        where = {
+            ...where,
             age: {
                 [Op.gte]: +queries.age_gte
             }
@@ -27,7 +28,8 @@ module.exports = async (queries) => {
     if (queries.ids) {
         const ids = queries.ids.split(',');
 
-        where.id = {
+        where = {
+            ...where,
             id: {
                 [Op.in]: ids
             }
@@ -35,7 +37,8 @@ module.exports = async (queries) => {
     }
 
     if (queries.name) {
-        where.name = {
+        where = {
+            ...where,
             name: {
                 [Op.substring]: queries.name
             }

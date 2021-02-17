@@ -26,7 +26,7 @@ module.exports = {
                 surname: 'lili',
                 age: 21,
                 email: 'lili@gmail.com',
-                password: await hash('222hT!h555'),
+                password: await hash('111hT!h555'),
                 createdAt: Sequelize.fn(NOW),
                 updatedAt: Sequelize.fn(NOW)
             },
@@ -37,7 +37,7 @@ module.exports = {
                 surname: 'max',
                 age: 28,
                 email: 'max@gmail.com',
-                password: await hash('333hT!h555'),
+                password: await hash('111hT!h555'),
                 createdAt: Sequelize.fn(NOW),
                 updatedAt: Sequelize.fn(NOW)
             }

@@ -12,8 +12,7 @@ module.exports = {
         attributes: {
             exclude: PASSWORD
         },
-        include: { model: OAuthModel, where },
-        paranoid: false
+        include: { model: OAuthModel, where }
     }),
 
     deleteTokenPair: (where, transaction) => OAuthModel.destroy({

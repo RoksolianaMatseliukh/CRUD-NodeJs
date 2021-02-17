@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "CRUD DEMO",
-    "description": "simple swagger - without uploading avatar and sending token in header(Authorization)",
+    "description": "SIMPLE SWAGGER - WITHOUT UPLOADING AVATAR AND SENDING TOKEN IN HEADER(Authorization).",
     "version": "1.0.0"
   },
   "servers": [

@@ -1,6 +1,9 @@
 module.exports = {
     ENTITY_CREATED: 'entity created',
     ENTITY_EDITED: 'entity edited',
+    PASSWORD_CHANGED: 'password changed',
+    USER_ACTIVATED: 'account activated, go to login',
+    USER_RESTORED: 'account restored',
 
     // BAD REQUEST
     EMAIL_NOT_VALID: 'email not valid',
@@ -13,6 +16,7 @@ module.exports = {
     PASSWORDS_NOT_EQUAL: 'passwords not equal',
     TOO_LARGE_FILE: 'too large file',
     USER_NOT_CONFIRMED: 'user not confirmed',
+    USER_NOT_DELETED: 'you can not restore account, user not deleted',
     WRONG_EMAIL_OR_PASSWORD: 'wrong email or password',
     WRONG_FILE_EXTENSION: 'wrong file extension',
     WRONG_NUMBER_OF_AVATAR: 'wrong number of avatar',
@@ -20,7 +24,6 @@ module.exports = {
 
     // FORBIDDEN
     PERMISSION_DENIED: 'permission denied',
-    USER_DELETED: 'action forbidden, because user deleted, activate account',
 
     // NOT FOUND
     ROUTE_NOT_FOUND: 'not found route'

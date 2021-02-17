@@ -2,7 +2,7 @@ const { oauthService } = require('../../services');
 const {
     ErrorHandler,
     customErrors: {
-        NOT_VALID_TOKEN, NO_TOKEN, PERMISSION_DENIED
+        ENTITY_NOT_FOUND, NO_TOKEN, PERMISSION_DENIED
     }
 } = require('../../errors');
 const { appEnum: { ACCESS_TOKEN, AUTHORIZATION } } = require('../../constants');
@@ -28,9 +28,9 @@ module.exports = (token_name, token_secret) => async (req, res, next) => {
 
         if (!userWithToken) {
             throw new ErrorHandler(
-                NOT_VALID_TOKEN.message,
-                NOT_VALID_TOKEN.code,
-                NOT_VALID_TOKEN.customCode
+                ENTITY_NOT_FOUND.message,
+                ENTITY_NOT_FOUND.code,
+                ENTITY_NOT_FOUND.customCode
             );
         }
 

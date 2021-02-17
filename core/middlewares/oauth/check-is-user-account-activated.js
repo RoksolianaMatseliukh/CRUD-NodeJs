@@ -4,9 +4,14 @@ const { emailActionsEnum: { ACTIVATE_ACCOUNT } } = require('../../constants');
 
 module.exports = async (req, res, next) => {
     try {
-        const { id } = req.user;
+        // for login
+        const { id } = req.user || {};
+        // for other actions
+        const { userId } = req.params;
 
-        const { status } = await actionTokensService.getActionTokenByParams({ action_name: ACTIVATE_ACCOUNT, user_id: id }) || {};
+        const { status } = await actionTokensService.getActionTokenByParams(
+            { action_name: ACTIVATE_ACCOUNT, user_id: id || userId }
+        ) || {};
 
         if (!status) {
             throw new ErrorHandler(

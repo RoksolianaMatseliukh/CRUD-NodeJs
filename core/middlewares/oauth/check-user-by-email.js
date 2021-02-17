@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     try {
         const { email } = req.body;
 
-        const [foundUser] = await usersService.getUsers({ email });
+        const foundUser = await usersService.getUserByEmail(email);
 
         if (!foundUser) {
             throw new ErrorHandler(
