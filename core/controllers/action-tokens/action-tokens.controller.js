@@ -1,18 +1,37 @@
 const {
-    actionTokensService, emailService, logsService, usersService
+    actionTokensService,
+    emailService,
+    logsService,
+    usersService
 } = require('../../services');
 const {
     databaseEnum: {
-        ACCOUNT_ACTIVATED, FORGOT_PASSWORD: FORGOT_PASSWORD_LOG, PASSWORD_CHANGED, USER_RESTORED, USER_TO_RESTORE
+        ACCOUNT_ACTIVATED,
+        FORGOT_PASSWORD: FORGOT_PASSWORD_LOG,
+        PASSWORD_CHANGED,
+        USER_RESTORED,
+        USER_TO_RESTORE
     },
-    emailActionsEnum: { FORGOT_PASSWORD, RESTORE_USER },
-    responseMessagesEnum: { PASSWORD_CHANGED: PASSWORD_CHANGED_MSG, USER_RESTORED: USER_RESTORED_MSG, USER_ACTIVATED },
+    emailActionsEnum: {
+        FORGOT_PASSWORD,
+        RESTORE_USER
+    },
+    responseMessagesEnum: {
+        CHECK_EMAIL,
+        PASSWORD_CHANGED: PASSWORD_CHANGED_MSG,
+        USER_RESTORED: USER_RESTORED_MSG,
+        USER_ACTIVATED
+    },
     statusCodesEnum: { CREATED }
 } = require('../../constants');
 const {
     actionTokenHelper,
-    passwordHelper: { hash },
-    transactionHelper: { transactionInstance }
+    passwordHelper: {
+        hash
+    },
+    transactionHelper: {
+        transactionInstance
+    }
 } = require('../../helpers');
 
 module.exports = {
@@ -99,7 +118,7 @@ module.exports = {
 
             await transaction.commit();
 
-            res.sendStatus(CREATED);
+            res.status(CREATED).json(CHECK_EMAIL);
         } catch (e) {
             await transaction.rollback();
             next(e);

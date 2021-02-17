@@ -1,4 +1,5 @@
 module.exports = {
+    CHECK_EMAIL: 'check email',
     ENTITY_CREATED: 'entity created',
     ENTITY_EDITED: 'entity edited',
     PASSWORD_CHANGED: 'password changed',

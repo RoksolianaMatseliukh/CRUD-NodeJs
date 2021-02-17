@@ -1,8 +1,18 @@
-const { tokenizer, transactionHelper: { transactionInstance } } = require('../../helpers');
+const {
+    tokenizer,
+    transactionHelper: {
+        transactionInstance
+    }
+} = require('../../helpers');
 const { oauthService } = require('../../services');
 const {
-    appEnum: { AUTHORIZATION },
-    statusCodesEnum: { CREATED, NO_CONTENT }
+    appEnum: {
+        AUTHORIZATION
+    },
+    statusCodesEnum: {
+        CREATED,
+        NO_CONTENT
+    }
 } = require('../../constants');
 
 module.exports = {

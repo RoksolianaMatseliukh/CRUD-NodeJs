@@ -2,20 +2,42 @@ const fs = require('fs-extra').promises;
 const path = require('path');
 
 const {
-    actionTokensService, emailService, logsService, usersService
+    actionTokensService,
+    emailService,
+    logsService,
+    usersService
 } = require('../../services');
 const {
     actionTokenHelper,
-    passwordHelper: { hash },
+    passwordHelper: {
+        hash
+    },
     fileHelper,
-    transactionHelper: { transactionInstance }
+    transactionHelper: {
+        transactionInstance
+    }
 } = require('../../helpers');
 const {
-    appEnum: { PUBLIC, USERS },
-    databaseEnum: { USER_REGISTERED, USER_SOFT_DELETED },
-    emailActionsEnum: { ACTIVATE_ACCOUNT, RESTORE_USER },
-    statusCodesEnum: { CREATED, NO_CONTENT },
-    responseMessagesEnum: { ENTITY_CREATED, ENTITY_EDITED }
+    appEnum: {
+        PUBLIC,
+        USERS
+    },
+    databaseEnum: {
+        USER_REGISTERED,
+        USER_SOFT_DELETED
+    },
+    emailActionsEnum: {
+        ACTIVATE_ACCOUNT,
+        RESTORE_USER
+    },
+    statusCodesEnum: {
+        CREATED,
+        NO_CONTENT
+    },
+    responseMessagesEnum: {
+        ENTITY_CREATED,
+        ENTITY_EDITED
+    }
 } = require('../../constants');
 
 module.exports = {

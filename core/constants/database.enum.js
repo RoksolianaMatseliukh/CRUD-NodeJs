@@ -31,6 +31,6 @@ module.exports = {
     PASSWORD_CHANGED: 'password_changed',
     USER_REGISTERED: 'user_registered',
     USER_RESTORED: 'user_restored',
-    USER_SOFT_DELETED: 'user_sift_deleted',
+    USER_SOFT_DELETED: 'user_soft_deleted',
     USER_TO_RESTORE: 'user_to_restore'
 };

@@ -1,4 +1,9 @@
-const { ErrorHandler, customErrors: { ROUTE_NOT_FOUND } } = require('../../errors');
+const {
+    ErrorHandler,
+    customErrors: {
+        ROUTE_NOT_FOUND
+    }
+} = require('../../errors');
 
 module.exports = {
     catchAllNotFoundRoutes: (req, res, next) => {
