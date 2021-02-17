@@ -1,0 +1,322 @@
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 12:57:06"
+}
+{
+  "message": "\"name\" is required",
+  "statusCode": 400,
+  "customCode": 4004,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 12:57:23"
+}
+{
+  "message": "\"name\" length must be at least 2 characters long",
+  "statusCode": 400,
+  "customCode": 4004,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 12:57:30"
+}
+{
+  "message": "entity already exists",
+  "customCode": 4002,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 12:57:45"
+}
+{
+  "message": "wrong file extension",
+  "statusCode": 400,
+  "customCode": 40013,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 12:58:19"
+}
+{
+  "message": "wrong number of avatar",
+  "statusCode": 400,
+  "customCode": 40014,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 12:58:40"
+}
+{
+  "message": "Invalid value { name: { [Symbol(substring)]: 'roksi' } }",
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:00:50"
+}
+{
+  "message": "Invalid value { name: { [Symbol(substring)]: 'roksi' } }",
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:01:37"
+}
+{
+  "message": "Invalid value { name: { [Symbol(substring)]: 'roksi' } }",
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:02:10"
+}
+{
+  "message": "entity not found",
+  "customCode": 4003,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:10:27"
+}
+{
+  "message": "Cannot destructure property 'id' of 'req.user' as it is undefined.",
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:15:02"
+}
+{
+  "message": "user not confirmed",
+  "statusCode": 400,
+  "customCode": 40010,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:16:41"
+}
+{
+  "message": "\"email\" is not allowed",
+  "statusCode": 400,
+  "customCode": 4004,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:16:47"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:16:55"
+}
+{
+  "message": "user not confirmed",
+  "statusCode": 400,
+  "customCode": 40010,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:18:38"
+}
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:18:51"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:18:56"
+}
+{
+  "message": "\"email\" is not allowed",
+  "statusCode": 400,
+  "customCode": 4004,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:25:03"
+}
+{
+  "message": "permission denied",
+  "customCode": 4021,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:25:12"
+}
+{
+  "message": "permission denied",
+  "customCode": 4021,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:26:03"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:26:24"
+}
+{
+  "message": "entity not found",
+  "customCode": 4003,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:28:05"
+}
+{
+  "message": "entity not found",
+  "customCode": 4003,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:28:19"
+}
+{
+  "message": "wrong email or password",
+  "customCode": 40012,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:28:39"
+}
+{
+  "message": "WHERE parameter \"user_id\" has invalid \"undefined\" value",
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:31:21"
+}
+{
+  "message": "entity not found",
+  "customCode": 4003,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:35:02"
+}
+{
+  "message": "\"email\" is required",
+  "statusCode": 400,
+  "customCode": 4001,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:46:00"
+}
+{
+  "message": "you can not restore account, user not deleted",
+  "statusCode": 403,
+  "customCode": 40011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:46:32"
+}
+{
+  "message": "\"email\" is required",
+  "statusCode": 400,
+  "customCode": 4001,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:49:21"
+}
+{
+  "message": "\"password\" is required",
+  "statusCode": 400,
+  "customCode": 4008,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:51:12"
+}
+{
+  "message": "\"confirm_password\" is required",
+  "statusCode": 400,
+  "customCode": 4008,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:51:15"
+}
+{
+  "message": "passwords not equal",
+  "statusCode": 400,
+  "customCode": 4007,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:51:19"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:51:31"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:54:10"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 13:56:11"
+}
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 18:28:20"
+}
+{
+  "message": "not found route",
+  "statusCode": 404,
+  "customCode": 4041,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 18:28:20"
+}
+{
+  "message": "entity already exists",
+  "customCode": 4002,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 18:30:45"
+}
+{
+  "message": "\"name\" is not allowed to be empty",
+  "statusCode": 400,
+  "customCode": 4004,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 19:03:21"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 19:04:14"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 19:31:59"
+}
+{
+  "message": "no token",
+  "customCode": 4006,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 20:57:28"
+}
+{
+  "message": "not valid token",
+  "customCode": 4011,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 20:57:48"
+}
+{
+  "message": "entity already exists",
+  "customCode": 4002,
+  "level": "error",
+  "label": "app",
+  "timestamp": "2021-02-17 22:25:53"
+}
