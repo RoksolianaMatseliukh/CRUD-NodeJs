@@ -40,7 +40,7 @@
                   },
                   "password": {
                     "type": "string",
-                    "example": "333hT!h555"
+                    "example": "111hT!h555"
                   },
                   "avatar": {
                     "type": "string",
@@ -317,7 +317,8 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "roksi@gmail.com"
                   }
                 }
               }
@@ -403,6 +404,22 @@
     "/auth/password/forgot": {
       "post": {
         "summary": "Send email - forgot password.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "roksi@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Check mail."
@@ -431,11 +448,11 @@
                 "properties": {
                   "password": {
                     "type": "string",
-                    "example": "333hT!h555"
+                    "example": "111hT!h555"
                   },
                   "confirm_password": {
                     "type": "string",
-                    "example": "333hT!h555"
+                    "example": "111hT!h555"
                   }
                 }
               }
