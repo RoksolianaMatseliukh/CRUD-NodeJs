@@ -1,0 +1,550 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CRUD DEMO",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/api",
+      "description": "all endpoints started with"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "Create a user.",
+        "description": "Avatar is not required.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "ira"
+                  },
+                  "surname": {
+                    "type": "string",
+                    "example": "ira"
+                  },
+                  "age": {
+                    "type": "integer",
+                    "minimum": 18,
+                    "example": 20
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "ira@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "333hT!h555"
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "name",
+                  "surname",
+                  "age",
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Entity created."
+          },
+          "400": {
+            "description": "Entity already exists. / Not valid body."
+          }
+        }
+      },
+      "get": {
+        "summary": "Returns a list of users.",
+        "responses": {
+          "200": {
+            "description": "A JSON array of users. / Entity not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "summary": "Returns a user by ID.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A user object.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ID not valid. / Entity not found."
+          }
+        }
+      },
+      "put": {
+        "summary": "Edit user.",
+        "description": "Only name, surname, avatar and age are allowed to edit. Also send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "ira"
+                  },
+                  "surname": {
+                    "type": "string",
+                    "example": "ira"
+                  },
+                  "age": {
+                    "type": "integer",
+                    "minimum": 18,
+                    "example": 20
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Entity edited."
+          },
+          "400": {
+            "description": "ID not valid. / Entity not found. / Not valid body. / No token."
+          },
+          "401": {
+            "description": "Not valid token."
+          },
+          "403": {
+            "description": "Permission denied. / Action forbidden, because user deleted, activate account."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Soft delete, send mail to restore account.",
+        "description": "Also send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content."
+          },
+          "400": {
+            "description": "ID not valid. / Entity not found. / No token."
+          },
+          "401": {
+            "description": "Not valid token."
+          },
+          "403": {
+            "description": "Permission denied. / Action forbidden, because user deleted, activate account."
+          }
+        }
+      }
+    },
+    "/auth/activate/{token}": {
+      "get": {
+        "summary": "Account activation from email.",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account activated, go to login."
+          },
+          "400": {
+            "description": "No token."
+          },
+          "401": {
+            "description": "Not valid token."
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "summary": "Login user.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "roksi@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "111hT!h555"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "A user object with access and refresh tokens.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/User_OAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Not valid body. / Wrong email or password. / User not confirmed."
+          }
+        }
+      }
+    },
+    "/auth/restore/account/{userId}": {
+      "post": {
+        "summary": "Send mail to restore account.",
+        "description": "When you soft delete an account, this mail is sent automatically, but you can send this mail again. Also send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Check mail."
+          },
+          "400": {
+            "description": "Email not valid. / No token."
+          },
+          "401": {
+            "description": "Not valid token."
+          },
+          "403": {
+            "description": "Permission denied."
+          }
+        }
+      }
+    },
+    "/auth/restore/{token}": {
+      "get": {
+        "summary": "Restore account from email.",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account restored."
+          },
+          "400": {
+            "description": "No token."
+          },
+          "401": {
+            "description": "Not valid token."
+          }
+        }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "summary": "Create new token pair by refresh token.",
+        "description": "Also send in header(Authorization) - refresh token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Access and refresh tokens.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/OAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No token."
+          },
+          "401": {
+            "description": "Not valid token."
+          }
+        }
+      }
+    },
+    "/auth/password/forgot": {
+      "post": {
+        "summary": "Send email - forgot password.",
+        "responses": {
+          "201": {
+            "description": "Check mail."
+          },
+          "400": {
+            "description": "Not valid emai. / User not confirmed."
+          }
+        }
+      }
+    },
+    "/auth/password/reset": {
+      "post": {
+        "summary": "Reset password.",
+        "description": "Also send in header(Authorization) - token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "example": "333hT!h555"
+                  },
+                  "confirm_password": {
+                    "type": "string",
+                    "example": "333hT!h555"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Password changed."
+          },
+          "400": {
+            "description": "Passwords not valid. / Passwords not equal. / No token."
+          },
+          "401": {
+            "description": "Not valid token."
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Logout.",
+        "description": "Only send in header(Authorization) - access token.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    },
+    "schemas": {
+      "User": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "roksi"
+          },
+          "surname": {
+            "type": "string",
+            "example": "roksi"
+          },
+          "age": {
+            "type": "integer",
+            "example": 26
+          },
+          "avatar": {
+            "type": "string",
+            "example": "users/1/avatar/7c55c0c0-7063-11eb-b141-abbdc2b4b0a4.jpg"
+          }
+        }
+      },
+      "User_OAuth": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "roksi"
+          },
+          "surname": {
+            "type": "string",
+            "example": "roksi"
+          },
+          "age": {
+            "type": "integer",
+            "example": 26
+          },
+          "avatar": {
+            "type": "string",
+            "example": "users/1/avatar/7c55c0c0-7063-11eb-b141-abbdc2b4b0a4.jpg"
+          },
+          "access_token": {
+            "type": "string"
+          },
+          "refresh_token": {
+            "type": "string"
+          }
+        }
+      },
+      "OAuth": {
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "refresh_token": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
