@@ -1,6 +1,9 @@
 const express = require('express');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const chalk = require('chalk');
 const fileUpload = require('express-fileupload');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const morgan = require('morgan');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
@@ -11,17 +14,32 @@ const { sequelize } = require('./database');
 const { sentry } = require('./errors');
 const winston = require('./logger');
 const {
-    appEnum: { APP, APP_IN_PROCESS, PUBLIC },
-    statusCodesEnum: { INTERNAL_SERVER_ERROR }
+    appEnum: {
+        APP,
+        APP_IN_PROCESS,
+        DEV,
+        PUBLIC
+    },
+    statusCodesEnum: {
+        INTERNAL_SERVER_ERROR
+    }
 } = require('./constants');
-const { appConfigs: { PORT } } = require('./configs');
-const { apiRouter, notFoundRouter } = require('./routers');
+const {
+    appConfigs: {
+        PORT
+    }
+} = require('./configs');
+const {
+    apiRouter,
+    notFoundRouter
+} = require('./routers');
 const cronRun = require('./cron-jobs');
 
 const app = express();
 const logger = winston(APP);
 
 app.use(fileUpload());
+app.use(morgan(DEV));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
